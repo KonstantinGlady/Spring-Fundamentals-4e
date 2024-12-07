@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import com.example.demo.json.AstroResponse;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,8 @@ public class AstroService {
     private final RestTemplate template;
     private final WebClient client;
 
-    public AstroService(RestTemplateBuilder builder) {
-        this.template = builder.rootUri("http://api.open-notify.org").build();
+    public AstroService(@Qualifier("astroRestTemplate") RestTemplate template) {
+        this.template = template;
         this.client = WebClient.create("http://api.open-notify.org");
     }
 
