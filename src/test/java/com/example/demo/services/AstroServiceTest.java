@@ -26,4 +26,13 @@ class AstroServiceTest {
         assertEquals(response.people().size(), response.number());
         System.out.println(response);
     }
+
+    @Test
+    void getAstroResponseAsync() {
+        var response = service.getAstroResponseAsync();
+        assertEquals("success", response.message());
+        assertTrue(response.number() >= 0);
+        assertEquals(response.people().size(), response.number());
+        System.out.println(response);
+    }
 }
